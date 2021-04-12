@@ -15,7 +15,7 @@ namespace GarageMaster.API.Controllers
     public class CarInfoController : ControllerBase
     {
         private readonly ICarInfoService carInfoService;
-        private readonly string _url = "http://localhost:57047/images/";
+        private readonly string _url = "http://139.59.229.66:5002/images/";
         public CarInfoController(ICarInfoService carInfoService)
         {
             this.carInfoService = carInfoService;
@@ -53,6 +53,41 @@ namespace GarageMaster.API.Controllers
             {
                 return StatusCode
                     (StatusCodes.Status500InternalServerError, e.Message);
+            }
+        }
+
+        [HttpPut("UpdateCarinfo")]
+        public IActionResult updateCarinfo([FromForm] Car_Info car_Info)
+        {
+            try
+            {
+                string pathImage = Path.Combine(Directory.GetCurrentDirectory(), $@"wwwroot/images/{car_Info.FileImage.FileName}");
+                using (var stream = new FileStream(pathImage, FileMode.Create))
+                {
+                    car_Info.FileImage.CopyTo(stream);
+                }
+                car_Info.C_Image = _url + car_Info.FileImage.FileName;
+                var result = carInfoService.InsertCarInfo(car_Info);
+                return StatusCode(StatusCodes.Status200OK, result);
+            }
+            catch (Exception e)
+            {
+                return StatusCode
+                    (StatusCodes.Status500InternalServerError, e.Message);
+            }
+        }
+
+        [HttpDelete("Delete")]
+        public IActionResult deleteCarinfo([FromQuery]int cid)
+        {
+            try
+            {
+                var result = carInfoService.DeleteCarinfo(cid);
+                return StatusCode(StatusCodes.Status200OK, result);
+            }
+            catch (Exception e)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, e.Message);
             }
         }
 

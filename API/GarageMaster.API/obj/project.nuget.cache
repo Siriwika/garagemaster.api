@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "BGjzt/Kx7ZqBmefIyzpMDN21J9N98T3OMA/Xf0n4JXs6lFPQlzaupwJlfX8+s1dXClQ2+xAdJufx7mytvo3XyQ==",
+  "dgSpecHash": "3eJTB0BSgKffat2AFfsVM+B+gqO2i8AAIt12fh0r0c3cjDfBLICq1/yOW0EgYMbP2D6O7x+kpJbodw6GZCu7Tg==",
   "success": true,
-  "projectFilePath": "D:\\New folder\\GarageMaster.API\\GarageMaster.API.csproj",
+  "projectFilePath": "D:\\API(github)\\garagemaster.api\\API\\GarageMaster.API\\GarageMaster.API.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\ACER\\.nuget\\packages\\dapper\\2.0.78\\dapper.2.0.78.nupkg.sha512",
     "C:\\Users\\ACER\\.nuget\\packages\\microsoft.aspnetcore.authentication.abstractions\\2.2.0\\microsoft.aspnetcore.authentication.abstractions.2.2.0.nupkg.sha512",

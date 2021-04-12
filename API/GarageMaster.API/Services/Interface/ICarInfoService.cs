@@ -12,5 +12,7 @@ namespace GarageMaster.API.Services.Interface
         List<Car_Info> GetCarInfo(int cid);
         List<Car_Info> GetMyCar(int uid);
         string InsertCarInfo(Car_Info car_Info);
+        string UpdateCarinfo(Car_Info car_Info);
+        string DeleteCarinfo(int cid);
     }
 }

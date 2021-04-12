@@ -15,7 +15,7 @@ namespace GarageMaster.API.Controllers
     public class GarageController : ControllerBase
     {
         private readonly IGarageService garageService;
-        private readonly string _url = "http://localhost:57047/images/";
+        private readonly string _url = "http://139.59.229.66:5002/images/";
         public GarageController(IGarageService garageService)
         {
             this.garageService = garageService;
