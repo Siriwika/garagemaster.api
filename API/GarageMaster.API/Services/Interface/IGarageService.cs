@@ -10,6 +10,7 @@ namespace GarageMaster.API.Services.Interface
     {
         List<Garage> GetAllGarage();
         List<Service> GetServicebyTCId(int tcid);
+        List<Service_of_Garage> GetServicebyGarage(int gid);
         List<Service_of_Garage> GetGaragebyService(int sid);
         string InsertGarage(Garage garage);
         string UpdateGarage(Garage garage);

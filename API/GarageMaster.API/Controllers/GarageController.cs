@@ -34,6 +34,14 @@ namespace GarageMaster.API.Controllers
             return new OkObjectResult(result);
         }
 
+        [HttpGet("GetServicebyGarage")]
+        public IActionResult ServiceByGarage(int gid)
+        {
+            var result = garageService.GetServicebyGarage(gid);
+            return new OkObjectResult(result);
+        }
+
+
         [HttpGet("GetGarageByService")]
         public IActionResult GarageByService(int sid)
         {

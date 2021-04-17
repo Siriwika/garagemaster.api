@@ -30,10 +30,22 @@ namespace GarageMaster.API.Services.Implement
             return result;
         }
 
+        public List<Service_of_Garage> GetServicebyGarage(int gid)
+        {
+
+            string queryString = $@"SELECT Service_of_Garage.G_Id,Service_of_Garage.SId,Service.SName,Service.TC_Id
+                                        FROM Service_of_Garage INNER JOIN Garage ON Service_of_Garage.G_Id = Garage.G_Id
+                                        INNER JOIN Service ON Service_of_Garage.SId = Service.SId
+                                        WHERE Garage.G_Id = {gid}";
+            var result = _db.QueryString<Service_of_Garage>(queryString).ToList();
+
+            return result;
+        }
+
         public List<Service_of_Garage> GetGaragebyService(int sid)
         {
 
-            string queryString = $@"SELECT Service_of_Garage.SId,Service_of_Garage.G_Id,Garage.G_Name,Garage.G_Latitude,Garage.G_Longitude 
+            string queryString = $@"SELECT Service_of_Garage.SId,Service_of_Garage.G_Id,Garage.G_Name,Garage.G_Description,Garage.G_Latitude,Garage.G_Longitude 
                                         FROM Service_of_Garage INNER JOIN Service ON Service_of_Garage.SId = Service.SId	
                                         INNER JOIN Garage ON Service_of_Garage.G_Id = Garage.G_Id
                                         WHERE Service.SId = {sid}";
@@ -102,6 +114,7 @@ namespace GarageMaster.API.Services.Implement
                 return "Update Garage failed.";
             }
         }
+
         public string DeleteGarage(int gid)
         {
             string queryString = $@"DELETE FROM Garage where G_Id={gid}";
