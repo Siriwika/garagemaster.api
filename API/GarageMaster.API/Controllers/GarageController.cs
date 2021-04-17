@@ -54,8 +54,6 @@ namespace GarageMaster.API.Controllers
         {
             try
             {
-                garage.G_Open_Time = TimeSpan.Parse(garage.openTime);
-                garage.G_Close_Time = TimeSpan.Parse(garage.closeTime);
                 string pathImage = Path.Combine(Directory.GetCurrentDirectory(), $@"wwwroot/images/{garage.FileImage.FileName}");
                 using (var stream = new FileStream(pathImage, FileMode.Create))
                 {
@@ -78,8 +76,6 @@ namespace GarageMaster.API.Controllers
         {
             try
             {
-                garage.G_Open_Time = TimeSpan.Parse(garage.openTime);
-                garage.G_Close_Time = TimeSpan.Parse(garage.closeTime);
                 string pathImage = Path.Combine(Directory.GetCurrentDirectory(), $@"wwwroot/images/{garage.FileImage.FileName}");
                 using (var stream = new FileStream(pathImage, FileMode.Create))
                 {

@@ -15,10 +15,8 @@ namespace GarageMaster.API.Model
 		public string G_Description { get; set; }
 		public string G_Phone { get; set; }
 		public string G_Date { get; set; }
-		public string openTime { get; set; }
-		public TimeSpan G_Open_Time { get; set; }
-		public string closeTime { get; set; }
-		public TimeSpan G_Close_Time { get; set; }
+		public DateTime G_Open_Time { get; set; }
+		public DateTime G_Close_Time { get; set; }
 
 		[Column(TypeName = "decimal(18,7)")]
 		public decimal G_Latitude { get; set; }
