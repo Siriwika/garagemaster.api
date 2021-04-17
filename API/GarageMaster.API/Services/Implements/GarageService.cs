@@ -98,6 +98,7 @@ namespace GarageMaster.API.Services.Implement
                                                     ,G_Phone = '{garage.G_Phone}'
                                                     ,G_Date = '{garage.G_Date}'
                                                     ,G_Open_Time = '{garage.G_Open_Time}'
+                                                    ,G_Close_Time = '{garage.G_Close_Time}'
                                                     ,G_Latitude = {garage.G_Latitude}
                                                     ,G_Longitude = {garage.G_Longitude}
                                                     ,G_charge = {garage.G_charge}
