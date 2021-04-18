@@ -67,7 +67,7 @@ namespace GarageMaster.API.Controllers
                     car_Info.FileImage.CopyTo(stream);
                 }
                 car_Info.C_Image = _url + car_Info.FileImage.FileName;
-                var result = carInfoService.InsertCarInfo(car_Info);
+                var result = carInfoService.UpdateCarinfo(car_Info);
                 return StatusCode(StatusCodes.Status200OK, result);
             }
             catch (Exception e)

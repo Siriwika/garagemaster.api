@@ -58,13 +58,14 @@ namespace GarageMaster.API.Services.Implement
         {
             string queryString = $@"INSERT INTO GARAGE (G_Image,G_Name,G_Description,
                                     G_Phone,G_Date,G_Open_Time,G_Latitude,G_Longitude,
-                                    G_charge,G_Service_Type,UId) VALUES
+                                    G_charge,G_Service_Type,UId,G_Close_Time) VALUES
                                     ('{garage.G_Image}'
                                     ,'{garage.G_Name}'
                                     ,'{garage.G_Description}'
                                     ,'{garage.G_Phone}'
                                     ,'{garage.G_Date}'
                                     ,'{garage.G_Open_Time}'
+                                    ,'{garage.G_Close_Time}'
                                     ,'{garage.G_Latitude}'
                                     ,'{garage.G_Longitude}'
                                     ,{garage.G_charge}
