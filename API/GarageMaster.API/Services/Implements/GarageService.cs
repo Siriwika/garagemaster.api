@@ -23,6 +23,13 @@ namespace GarageMaster.API.Services.Implement
             return result;
         }
 
+        public List<Garage> GetGarageById(int uid)
+        {
+            string queryString = $@"SELECT * FROM Garage WHERE UId = {uid}";
+            var result = _db.QueryString<Garage>(queryString).ToList();
+            return result;
+        }
+
         public List<Service> GetServicebyTCId(int tcid)
         {
             string queryString = $@"SELECT SName FROM Service WHERE TC_Id = {tcid}";
@@ -32,7 +39,6 @@ namespace GarageMaster.API.Services.Implement
 
         public List<Service_of_Garage> GetServicebyGarage(int gid)
         {
-
             string queryString = $@"SELECT Service_of_Garage.G_Id,Service_of_Garage.SId,Service.SName,Service.TC_Id
                                         FROM Service_of_Garage INNER JOIN Garage ON Service_of_Garage.G_Id = Garage.G_Id
                                         INNER JOIN Service ON Service_of_Garage.SId = Service.SId

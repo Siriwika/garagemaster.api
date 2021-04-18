@@ -9,6 +9,7 @@ namespace GarageMaster.API.Services.Interface
     public interface IGarageService
     {
         List<Garage> GetAllGarage();
+        List<Garage> GetGarageById(int uid);
         List<Service> GetServicebyTCId(int tcid);
         List<Service_of_Garage> GetServicebyGarage(int gid);
         List<Service_of_Garage> GetGaragebyService(int sid);
