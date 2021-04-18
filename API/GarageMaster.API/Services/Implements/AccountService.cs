@@ -19,7 +19,7 @@ namespace GarageMaster.API.Services.Implement
 
         public string AddUser(User user)
         {
-            string queryString = $@"INSERT INTO User (UFullName,U_Email) VALUES
+            string queryString = $@"INSERT INTO GUser (UFullName,U_Email) VALUES
                                     ('{user.UFullName}','{user.U_Email}')";
             var data = _db.ExecuteString<int>(queryString);
             if(data != 0)
