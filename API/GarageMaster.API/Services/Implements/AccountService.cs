@@ -17,7 +17,7 @@ namespace GarageMaster.API.Services.Implement
             this._db = baseRepository;
         }
 
-        public string AddUser(User user)
+        public string AddUser(GUser user)
         {
             string queryString = $@"INSERT INTO GUser (UFullName,U_Email) VALUES
                                     ('{user.UFullName}','{user.U_Email}')";
@@ -32,5 +32,11 @@ namespace GarageMaster.API.Services.Implement
             }
         }
 
+        public List<GUser> Login(string email)
+        {
+            string queryString = $@"Select *  from GUser where U_Email={email}";
+            var data = _db.QueryString<GUser>(queryString).ToList();
+            return data;
+        }
     }
 }

@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace GarageMaster.API.Model
 {
-    public class User
+    public class GUser
     {
         public int UId { get; set; }
         public string UFullName { get; set; }

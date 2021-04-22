@@ -8,6 +8,7 @@ namespace GarageMaster.API.Services.Interface
 {
     public interface IAccountService
     {
-        string AddUser(User user);
+        string AddUser(GUser user);
+        List<GUser> Login(string email);
     }
 }

@@ -21,7 +21,7 @@ namespace GarageMaster.API.Controllers
         }
         
         [HttpPost("AddUser")]
-        public IActionResult AddUser([FromBody] User user)
+        public IActionResult AddUser([FromBody] GUser user)
         {
             try
             {
@@ -32,6 +32,22 @@ namespace GarageMaster.API.Controllers
             {
                 return StatusCode(StatusCodes.Status500InternalServerError, e.Message);
             }
+        }
+
+        [HttpPost("Login")]
+        public IActionResult LoginGUser([FromBody] string email)
+        {
+
+            try
+            {
+                var result = accountService.Login(email);
+                return StatusCode(StatusCodes.Status200OK, result);
+            }
+            catch (Exception e)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, e.Message);
+            }
+
         }
     }
 }
