@@ -16,5 +16,6 @@ namespace GarageMaster.API.Services.Interface
         string InsertGarage(Garage garage);
         string UpdateGarage(Garage garage);
         string DeleteGarage(int gid);
+        string DeleteService(int gid);
     }
 }

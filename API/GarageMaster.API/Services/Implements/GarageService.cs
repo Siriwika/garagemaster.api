@@ -26,8 +26,8 @@ namespace GarageMaster.API.Services.Implement
         public List<Garage> GetGarageById(int uid)
         {
             string queryString = $@"SELECT * FROM Garage WHERE UId = {uid}";
-            var result = _db.QueryString<Garage>(queryString).ToList();
-            return result;
+            var garage = _db.QueryString<Garage>(queryString).ToList();
+            return garage;
         }
 
         public List<Service> GetServicebyTCId(int tcid)
@@ -82,14 +82,17 @@ namespace GarageMaster.API.Services.Implement
             string queryString2 = $@"SELECT G_Id FROM Garage WHERE G_Name='{garage.G_Name}'";
             var data1 = _db.ExecuteString<int>(queryString2);
 
-            string queryString3 = $@"INSERT INTO Service_of_Garage (SId,G_Id) VALUES
-                                        ({garage.SId},{data1})";
-            //SId From UI
-            var data2 = _db.ExecuteString<int>(queryString3);
-
-            if (data != 0 && data2 != 0)
+            for (int i = 0; i <= garage.Tmp.Count; i++)
             {
-                return "GarageAdd Succes.";
+                    string queryString3 = $@"INSERT INTO Service_of_Garage (SId,G_Id) VALUES
+                                        ({garage.Tmp[i].SId},{data1})";
+                    var data2 = _db.ExecuteString<int>(queryString3);
+            }
+            //SId From UI
+
+            if (data != 0)
+            {
+                return "GarageAdd Success.";
             }
             else
             {
@@ -127,13 +130,31 @@ namespace GarageMaster.API.Services.Implement
         {
             string queryString = $@"DELETE FROM Garage where G_Id={gid}";
             var data = _db.ExecuteString<int>(queryString);
-            if (data != 0)
+
+            string query = $@"DELETE FROM Service_of_Garage where G_Id={gid}";
+            var data1 = _db.ExecuteString<int>(query);
+
+            if (data != 0 && data1 !=0)
             {
                 return "DeleteGarage Success.";
             }
             else
             {
                 return "DeleteGarage failed. ";
+            }
+        }
+
+        public string DeleteService(int gid)
+        {
+            string queryString = $@"DELETE FROM Service_of_Garage where G_Id={gid}";
+            var data = _db.ExecuteString<int>(queryString);
+            if (data != 0)
+            {
+                return "DeleteService Success.";
+            }
+            else
+            {
+                return "DeleteService failed. ";
             }
         }
     }

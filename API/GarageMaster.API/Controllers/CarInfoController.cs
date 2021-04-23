@@ -57,7 +57,7 @@ namespace GarageMaster.API.Controllers
         }
 
         [HttpPut("UpdateCarinfo")]
-        public IActionResult updateCarinfo([FromForm] Car_Info car_Info)
+        public IActionResult UpdateCarinfo([FromForm] Car_Info car_Info)
         {
             try
             {
@@ -78,7 +78,7 @@ namespace GarageMaster.API.Controllers
         }
 
         [HttpDelete("Delete")]
-        public IActionResult deleteCarinfo([FromQuery]int cid)
+        public IActionResult DeleteCarinfo([FromQuery]int cid)
         {
             try
             {

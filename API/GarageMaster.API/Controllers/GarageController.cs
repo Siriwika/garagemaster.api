@@ -100,12 +100,27 @@ namespace GarageMaster.API.Controllers
             }
         }
 
-        [HttpDelete("Delete")]
+        [HttpDelete("DeleteGarage")]
         public IActionResult Delete([FromQuery] int gid)
         {
             try
             {
                 var result = garageService.DeleteGarage(gid);
+                return StatusCode(StatusCodes.Status200OK, result);
+            }
+            catch (Exception e)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, e.Message);
+            }
+        }
+        
+
+        [HttpDelete("DeleteService")]
+        public IActionResult Deleteservice([FromQuery] int gid)
+        {
+            try
+            {
+                var result = garageService.DeleteService(gid);
                 return StatusCode(StatusCodes.Status200OK, result);
             }
             catch (Exception e)

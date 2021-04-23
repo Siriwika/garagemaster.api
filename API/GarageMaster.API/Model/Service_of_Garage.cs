@@ -9,10 +9,6 @@ namespace GarageMaster.API.Model
     {
         public int SId { get; set; }
         public int G_Id { get; set; }
-        public string G_Name { get; set; }
-        public string G_Description { get; set; }
-        public string G_Latitude { get; set; }
-        public string G_Longitude { get; set; }
 
     }
 }
