@@ -34,7 +34,7 @@ namespace GarageMaster.API.Services.Implement
 
         public List<GUser> Login(string email)
         {
-            string queryString = $@"Select *  from GUser where U_Email={email}";
+            string queryString = $@"Select *  from GUser where U_Email='{email}'";
             var data = _db.QueryString<GUser>(queryString).ToList();
             return data;
         }

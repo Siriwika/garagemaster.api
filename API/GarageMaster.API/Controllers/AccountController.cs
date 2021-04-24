@@ -35,7 +35,7 @@ namespace GarageMaster.API.Controllers
         }
 
         [HttpPost("Login")]
-        public IActionResult LoginGUser([FromBody] string email)
+        public IActionResult LoginGUser([FromQuery] string email)
         {
 
             try
