@@ -37,25 +37,27 @@ namespace GarageMaster.API.Services.Implement
             return result;
         }
 
-        public List<Service_of_Garage> GetServicebyGarage(int gid)
+        public List<Service> GetServicebyGarage(int gid)
         {
-            string queryString = $@"SELECT Service_of_Garage.G_Id,Service_of_Garage.SId,Service.SName,Service.TC_Id
+            string queryString = $@"SELECT Service_of_Garage.G_Id,Service.SId,Service.SName,Service.TC_Id
                                         FROM Service_of_Garage INNER JOIN Garage ON Service_of_Garage.G_Id = Garage.G_Id
                                         INNER JOIN Service ON Service_of_Garage.SId = Service.SId
                                         WHERE Garage.G_Id = {gid}";
-            var result = _db.QueryString<Service_of_Garage>(queryString).ToList();
+            var result = _db.QueryString<Service>(queryString).ToList();
 
             return result;
         }
 
-        public List<Service_of_Garage> GetGaragebyService(int sid)
+        public List<Garage> GetGaragebyService(int sid)
         {
 
-            string queryString = $@"SELECT Service_of_Garage.SId,Service_of_Garage.G_Id,Garage.G_Name,Garage.G_Description,Garage.G_Latitude,Garage.G_Longitude 
+            string queryString = $@"SELECT Service_of_Garage.SId,Service_of_Garage.G_Id,Garage.G_Image,Garage.G_Name,Garage.G_Description,
+                                    Garage.G_Phone,Garage.G_Date,Garage.G_Open_Time,Garage.G_Latitude,Garage.G_Longitude,
+                                    Garage.G_charge,Garage.G_Service_Type,Garage.UId,Garage.G_Close_Time
                                         FROM Service_of_Garage INNER JOIN Service ON Service_of_Garage.SId = Service.SId	
                                         INNER JOIN Garage ON Service_of_Garage.G_Id = Garage.G_Id
                                         WHERE Service.SId = {sid}";
-            var result = _db.QueryString<Service_of_Garage>(queryString).ToList();
+            var result = _db.QueryString<Garage>(queryString).ToList();
 
             return result;
         }

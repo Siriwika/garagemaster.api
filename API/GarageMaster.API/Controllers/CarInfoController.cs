@@ -22,14 +22,14 @@ namespace GarageMaster.API.Controllers
         }
 
         [HttpGet("GetCar")]
-        public IActionResult ShowDetailCar(int cid)
+        public IActionResult ShowDetailCar([FromQuery] int cid)
         {
             var result = carInfoService.GetCarInfo(cid);
             return new OkObjectResult(result);
         }
 
         [HttpGet("GetCarByUId")]
-        public IActionResult ShowMyCar(int uid)
+        public IActionResult ShowMyCar([FromQuery] int uid)
         {
             var result = carInfoService.GetMyCar(uid);
             return new OkObjectResult(result);

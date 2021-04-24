@@ -10,5 +10,6 @@ namespace GarageMaster.API.Model
         public int SId { get; set; }
         public string SName { get; set; }
         public int TC_Id { get; set; }
+        public int G_Id { get; set; }
     }
 }

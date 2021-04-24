@@ -29,21 +29,21 @@ namespace GarageMaster.API.Controllers
         }
 
         [HttpGet("GetGaragebyId")]
-        public IActionResult GetGarageById(int uid)
+        public IActionResult GetGarageById([FromQuery] int uid)
         {
             var result = garageService.GetGarageById(uid);
             return new OkObjectResult(result);
         }
 
         [HttpGet("GetService")]
-        public IActionResult ServiceByTCId(int tcid)
+        public IActionResult ServiceByTCId([FromQuery] int tcid)
         {
             var result = garageService.GetServicebyTCId(tcid);
             return new OkObjectResult(result);
         }
 
         [HttpGet("GetServicebyGarage")]
-        public IActionResult ServiceByGarage(int gid)
+        public IActionResult ServiceByGarage([FromQuery] int gid)
         {
             var result = garageService.GetServicebyGarage(gid);
             return new OkObjectResult(result);
@@ -51,7 +51,7 @@ namespace GarageMaster.API.Controllers
 
 
         [HttpGet("GetGarageByService")]
-        public IActionResult GarageByService(int sid)
+        public IActionResult GarageByService([FromQuery] int sid)
         {
             var result = garageService.GetGaragebyService(sid);
             return new OkObjectResult(result);
