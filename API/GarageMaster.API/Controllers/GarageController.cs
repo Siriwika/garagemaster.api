@@ -2,6 +2,7 @@
 using GarageMaster.API.Services.Interface;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -67,7 +68,9 @@ namespace GarageMaster.API.Controllers
                 {
                     garage.FileImage.CopyTo(stream);
                 }
+                var tmp = JsonConvert.DeserializeObject<List<Service_of_Garage>>(garage.listTmp);
                 garage.G_Image = _url + garage.FileImage.FileName;
+                garage.Tmp = tmp;
                 var result = garageService.InsertGarage(garage);
                 return StatusCode(StatusCodes.Status200OK, result);
             }

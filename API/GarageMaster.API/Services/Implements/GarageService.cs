@@ -65,8 +65,8 @@ namespace GarageMaster.API.Services.Implement
         public string InsertGarage(Garage garage)
         {
             string queryString = $@"INSERT INTO GARAGE (G_Image,G_Name,G_Description,
-                                    G_Phone,G_Date,G_Open_Time,G_Latitude,G_Longitude,
-                                    G_charge,G_Service_Type,UId,G_Close_Time) VALUES
+                                    G_Phone,G_Date,G_Open_Time,G_Close_Time,G_Latitude,G_Longitude,
+                                    G_charge,G_Service_Type,UId) VALUES
                                     ('{garage.G_Image}'
                                     ,'{garage.G_Name}'
                                     ,'{garage.G_Description}'
@@ -74,21 +74,21 @@ namespace GarageMaster.API.Services.Implement
                                     ,'{garage.G_Date}'
                                     ,'{garage.G_Open_Time}'
                                     ,'{garage.G_Close_Time}'
-                                    ,'{garage.G_Latitude}'
-                                    ,'{garage.G_Longitude}'
+                                    ,{garage.G_Latitude}
+                                    ,{garage.G_Longitude}
                                     ,{garage.G_charge}
                                     ,'{garage.G_Service_Type}'
                                     ,{garage.UId})";
             var data = _db.ExecuteString<int>(queryString);
 
             string queryString2 = $@"SELECT G_Id FROM Garage WHERE G_Name='{garage.G_Name}'";
-            var data1 = _db.ExecuteString<int>(queryString2);
+            var data1 = _db.QueryString<Service_of_Garage>(queryString2).FirstOrDefault();
 
-            for (int i = 0; i <= garage.Tmp.Count; i++)
+            for (int i = 0; i < garage.Tmp.Count; i++)
             {
-                    string queryString3 = $@"INSERT INTO Service_of_Garage (SId,G_Id) VALUES
-                                        ({garage.Tmp[i].SId},{data1})";
-                    var data2 = _db.ExecuteString<int>(queryString3);
+                string queryString3 = $@"INSERT INTO Service_of_Garage (SId,G_Id) VALUES
+                                        ({garage.Tmp[i].SId},{data1.G_Id})";
+                var data2 = _db.ExecuteString<int>(queryString3);
             }
             //SId From UI
 

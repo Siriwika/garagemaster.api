@@ -27,6 +27,7 @@ namespace GarageMaster.API.Model
 		public string G_Service_Type { get; set; }
 		public int UId { get; set; }
         public int SId { get; set; }
+        public string listTmp { get; set; }
         public List<Service_of_Garage> Tmp { get; set; }
         public IFormFile FileImage { get; set; }
 	}
