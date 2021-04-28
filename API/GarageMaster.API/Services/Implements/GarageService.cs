@@ -83,12 +83,12 @@ namespace GarageMaster.API.Services.Implement
 
             string queryString2 = $@"SELECT G_Id FROM Garage WHERE G_Name='{garage.G_Name}'";
             var data1 = _db.QueryString<Service_of_Garage>(queryString2).FirstOrDefault();
-
+            var data2 = 0;
             for (int i = 0; i < garage.Tmp.Count; i++)
             {
                 string queryString3 = $@"INSERT INTO Service_of_Garage (SId,G_Id) VALUES
                                         ({garage.Tmp[i].SId},{data1.G_Id})";
-                var data2 = _db.ExecuteString<int>(queryString3);
+                data2 = _db.ExecuteString<int>(queryString3);
             }
             //SId From UI
 
@@ -159,5 +159,27 @@ namespace GarageMaster.API.Services.Implement
                 return "DeleteService failed. ";
             }
         }
+
+        public string InsertService(Garage garage)
+        {
+            var data2 = 0;
+            for (int i = 0; i < garage.Tmp.Count; i++)
+            {
+                string queryString3 = $@"INSERT INTO Service_of_Garage (SId,G_Id) VALUES
+                                        ({garage.Tmp[i].SId},{garage.G_Id})";
+                data2 = _db.ExecuteString<int>(queryString3);
+            }
+            //SId From UI
+
+            if (data2 != 0)
+            {
+                return "ServiceeAdd Success.";
+            }
+            else
+            {
+                return "ServiceeAdd failed.";
+            }
+        }
+
     }
 }

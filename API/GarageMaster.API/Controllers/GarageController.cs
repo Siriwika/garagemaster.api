@@ -92,7 +92,9 @@ namespace GarageMaster.API.Controllers
                 {
                     garage.FileImage.CopyTo(stream);
                 }
+                var tmp = JsonConvert.DeserializeObject<List<Service_of_Garage>>(garage.listTmp);
                 garage.G_Image = _url + garage.FileImage.FileName;
+                garage.Tmp = tmp;
                 var result = garageService.UpdateGarage(garage);
                 return StatusCode(StatusCodes.Status200OK, result);
             }
@@ -102,6 +104,7 @@ namespace GarageMaster.API.Controllers
                     (StatusCodes.Status500InternalServerError, e.Message);
             }
         }
+
 
         [HttpDelete("DeleteGarage")]
         public IActionResult Delete([FromQuery] int gid)
@@ -130,6 +133,24 @@ namespace GarageMaster.API.Controllers
             {
                 return StatusCode(StatusCodes.Status500InternalServerError, e.Message);
             }
+        }
+
+        [HttpPost("InsertService")]
+        public IActionResult InsertService([FromBody] Garage garage)
+        {
+            try
+            {
+                var tmp = JsonConvert.DeserializeObject<List<Service_of_Garage>>(garage.listTmp);
+                garage.Tmp = tmp;
+                var result = garageService.InsertService(garage);
+                return StatusCode(StatusCodes.Status200OK, result);
+            }
+            catch (Exception e)
+            {
+                return StatusCode
+                    (StatusCodes.Status500InternalServerError, e.Message);
+            }
+
         }
 
         [HttpGet("help_check")]
