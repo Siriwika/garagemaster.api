@@ -90,16 +90,16 @@ namespace GarageMaster.API.Controllers
                 if(garage.FileImage.Length != 0)
                 {
                     string pathImage = Path.Combine(Directory.GetCurrentDirectory(), $@"wwwroot/images/{garage.FileImage.FileName}");
-                using (var stream = new FileStream(pathImage, FileMode.Create))
+                    using (var stream = new FileStream(pathImage, FileMode.Create))
                 {
                     garage.FileImage.CopyTo(stream);
                 }
                     garage.G_Image = _url + garage.FileImage.FileName;
                 }
                 
-                var tmp = JsonConvert.DeserializeObject<List<Service_of_Garage>>(garage.listTmp);
+                //var tmp = JsonConvert.DeserializeObject<List<Service_of_Garage>>(garage.listTmp);
               
-                garage.Tmp = tmp;
+                //garage.Tmp = tmp;
                 var result = garageService.UpdateGarage(garage);
                 return StatusCode(StatusCodes.Status200OK, result);
             }
