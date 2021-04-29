@@ -87,7 +87,7 @@ namespace GarageMaster.API.Controllers
         {
             try
             {
-                if(garage.FileImage.Length != 0)
+                if(garage.FileImage != null)
                 {
                     string pathImage = Path.Combine(Directory.GetCurrentDirectory(), $@"wwwroot/images/{garage.FileImage.FileName}");
                     using (var stream = new FileStream(pathImage, FileMode.Create))
